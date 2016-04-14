@@ -1,4 +1,4 @@
-# Running HipChat in Docker
+# Running HipChat4 in Docker
 
 * 1. [Install Docker](https://docs.docker.com/engine/installation/)
 * 2. Install [docker-compose](https://docs.docker.com/compose/install/)

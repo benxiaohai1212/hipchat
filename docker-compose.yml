@@ -1,5 +1,8 @@
 version: '2'
 
+volumes:
+  hipchat_data: {}
+
 services:
   hipchat:
     image: andrey01/hipchat
@@ -8,8 +11,9 @@ services:
       - /dev/dri
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
+      - hipchat_data:/home/user
       # - $HOME/.config/Atlassian:/home/user/.config/Atlassian
-      - ./HipChat.ini:/home/user/.config/Atlassian/HipChat.ini
+      # - ./HipChat.ini:/home/user/.config/Atlassian/HipChat.ini
     environment:
       - DISPLAY=unix$DISPLAY
       - TZ=Europe/Amsterdam
