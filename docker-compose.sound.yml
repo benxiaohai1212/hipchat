@@ -1,0 +1,13 @@
+version: '2'
+
+# pulseaudio has to be installed in Dockerfile for this to be working!
+
+services:
+  hipchat:
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/machine-id:/etc/machine-id:ro
+      - /run/user/1000/pulse:/run/user/1000/pulse
+      - /dev/shm:/dev/shm
+    environment:
+      - PULSE_SERVER=unix:/run/user/1000/pulse/native
