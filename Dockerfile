@@ -15,6 +15,12 @@ RUN apt-get update \
 
 # Make HipChat grsec friendly
 #
+# To build the Docker image, I currently had to disable the following grsec protections:
+# # grep -E "chroot_deny_chmod|chroot_deny_mknod|chroot_caps" /etc/sysctl.d/grsec.conf
+# kernel.grsecurity.chroot_deny_chmod = 0
+# kernel.grsecurity.chroot_deny_mknod = 0
+# kernel.grsecurity.chroot_caps = 0 (relates to a systemd package)
+#
 # (runtime only, since xattrs are not preserved in Docker's final image)
 # m: Disable MPROTECT // grsec: denied RWX mmap of <anonymous mapping>
 # RUN setfattr -n user.pax.flags -v "m" /opt/HipChat4/lib/HipChat.bin /opt/HipChat4/lib/QtWebEngineProcess.bin
