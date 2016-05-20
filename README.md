@@ -15,3 +15,15 @@ cd hipchat
 docker-compose run -d
 ```
 
+### Useful alias
+
+Place the following to your ~/.bash_aliases  
+After that you can issue `hipchat` command  
+
+```
+alias docker="sudo -E docker"
+alias docker-compose="sudo -E docker-compose"
+
+function docker_helper() { { pushd ~/docker/$1; docker-compose rm -fa "$1"; docker-compose run -d --name "$1" "$@"; popd; } }
+function hipchat() { { docker_helper $FUNCNAME $@; } }
+```
