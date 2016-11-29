@@ -1,7 +1,7 @@
 version: '2'
 
 volumes:
-  hipchat_data: {}
+  data: {}
 
 services:
   hipchat:
@@ -11,7 +11,7 @@ services:
       - /dev/dri
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - hipchat_data:/home/user
+      - data:/home/user
       # - $HOME/.config/Atlassian:/home/user/.config/Atlassian
       # - ./HipChat.ini:/home/user/.config/Atlassian/HipChat.ini
     environment:
