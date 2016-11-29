@@ -18,6 +18,5 @@ services:
       - DISPLAY=unix$DISPLAY
       - TZ=Europe/Amsterdam
       # for the HiDPI screens you can try uncommenting these variables
-      # - QT_AUTO_SCREEN_SCALE_FACTOR=1
+      - QT_AUTO_SCREEN_SCALE_FACTOR=1
       # - QT_DEVICE_PIXEL_RATIO=2
-    read_only: true
