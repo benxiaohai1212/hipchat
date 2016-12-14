@@ -12,11 +12,9 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - data:/home/user
-      # - $HOME/.config/Atlassian:/home/user/.config/Atlassian
-      # - ./HipChat.ini:/home/user/.config/Atlassian/HipChat.ini
+      - /etc/localtime:/etc/localtime:ro
     environment:
       - DISPLAY=unix$DISPLAY
-      - TZ=Europe/Amsterdam
       # for the HiDPI screens you can try uncommenting these variables
       - QT_AUTO_SCREEN_SCALE_FACTOR=1
       # - QT_DEVICE_PIXEL_RATIO=2
