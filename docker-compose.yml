@@ -5,7 +5,7 @@ volumes:
 
 services:
   hipchat:
-    image: andrey01/hipchat
+    image: local/hipchat
     network_mode: bridge
     devices:
       - /dev/dri
