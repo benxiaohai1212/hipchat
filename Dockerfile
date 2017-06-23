@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:zesty
 MAINTAINER Andrey Arapov <andrey.arapov@nixaid.com>
 
 # To avoid problems with Dialog and curses wizards
