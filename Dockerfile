@@ -1,13 +1,13 @@
-FROM ubuntu:zesty
+FROM ubuntu:xenial
 MAINTAINER Andrey Arapov <andrey.arapov@nixaid.com>
 
 # To avoid problems with Dialog and curses wizards
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
-    apt-get -y --no-install-recommends install ca-certificates apt-transport-https wget attr lsb-release && \
+    apt-get -y --no-install-recommends install ca-certificates apt-transport-https wget attr && \
     wget -O - https://atlassian.artifactoryonline.com/atlassian/api/gpg/key/public | apt-key add - && \
-    echo "deb https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client $(lsb_release -c -s) main" > /etc/apt/sources.list.d/atlassian-hipchat4.list && \
+    echo "deb https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client xenial main" > /etc/apt/sources.list.d/atlassian-hipchat4.list && \
     apt-get update && \
     apt-get -y --no-install-recommends install hipchat4 libqt5gui5 && \
     apt-get -fy --no-install-recommends install && \
@@ -21,14 +21,10 @@ RUN apt-get update && \
 # kernel.grsecurity.chroot_deny_mknod = 0
 # kernel.grsecurity.chroot_caps = 0 (relates to a systemd package)
 
-ENV USER user
-ENV UID 1000
-ENV GROUPS video
-ENV HOME /home/$USER
-RUN useradd -u $UID -m -d $HOME -s /usr/sbin/nologin -g $GROUPS $USER
+RUN useradd -u 1000 -m -d /home/user -s /usr/sbin/nologin -g video user
 
 COPY launch /launch
 
-WORKDIR $HOME
+WORKDIR /home/user
 VOLUME [ "/tmp" ]
 ENTRYPOINT [ "sh", "/launch" ]
