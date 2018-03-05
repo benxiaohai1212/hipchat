@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-
-# Make HipChat grsec friendly
-setfattr -n user.pax.flags -v m /opt/HipChat4/lib/HipChat.bin /opt/HipChat4/lib/QtWebEngineProcess.bin
-
-su -p -s /bin/sh -c /usr/local/bin/hipchat4 user
